@@ -1,4 +1,12 @@
-tests/AmazonTest.class
+tests/selectElementsPractice.class
 tests/ChromeTest2.class
+tests/EtsyTestWaits.class
+tests/HomeDepot.class
+tests/AutomationPractice.class
+tests/AmazonTest.class
+tests/GoogleTest.class
 tests/ChromeTest.class
+tests/ExpediaTest.class
+tests/AmazonTest2.class
 tests/PracticeSelenium.class
+tests/TestActionsClass.class

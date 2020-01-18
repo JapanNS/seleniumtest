@@ -38,12 +38,45 @@
         <artifactId>javafaker</artifactId>
         <version>1.0.1</version>
     </dependency>
-
+    <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
+    <dependency>
+        <groupId>info.cukes</groupId>
+        <artifactId>cucumber-java</artifactId>
+        <version>1.2.4</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
+    <dependency>
+        <groupId>info.cukes</groupId>
+        <artifactId>cucumber-junit</artifactId>
+        <version>1.2.5</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>info.cukes</groupId>
+        <artifactId>cucumber-core</artifactId>
+        <version>1.2.5</version>
+        <scope>test</scope>
+    </dependency>
 
 </dependencies>
 
+    <profiles>
+        <profile>
+            <id>chrome</id>
+
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M4</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*</exclude>
+
+                    </excludes>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -53,14 +86,14 @@
                         <configuration>
                             <includes>
                                 <include>**/ChromeTest2.java</include>
+                                <include>**/ChromeTest.java</include>
                             </includes>
-                            <exludes>
-                                <exclude>**/ChromeTest2.java</exclude>
-                            </exludes>
+                            <excludes>
+                                <exclude>**/ChromeTest.java</exclude>
+                            </excludes>
                         </configuration>
                         <goals>
                             <goal>integration-test</goal>
-                            <goal>verify</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -69,5 +102,45 @@
 
         </plugins>
     </build>
+
+        </profile>
+        <profile>
+            <id>smoke</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.0.0-M4</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*</exclude>
+
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>3.0.0-M4</version>
+                        <executions>
+                            <execution>
+                                <configuration>
+                                    <includes>
+                                        <include>**/SmokeTest.java</include>
+                                    </includes>
+                                </configuration>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
