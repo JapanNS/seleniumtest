@@ -4,9 +4,12 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = {"classpath:features"},
+@CucumberOptions(
+        plugin = {"pretty", "html:target/default-cucumber-reports"},
+        features = {"classpath:features"},
         glue= {"step_defs"},
-        dryRun = true)
+       // tags = "@expedia",
+        dryRun = false)
 public class CucumberRunner {
 
 }

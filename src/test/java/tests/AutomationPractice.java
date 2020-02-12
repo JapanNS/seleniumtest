@@ -21,6 +21,8 @@ public class AutomationPractice {
         Thread.sleep(1000);
         Assert.assertTrue(yearsOfExp.isSelected());
 
+
+
         driver.close();
     }
 }
